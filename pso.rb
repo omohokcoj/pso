@@ -1,18 +1,17 @@
-	
 class Pso
-	def initialize( numParticles = 20, dimension, min, max )
+	def initialize( dimension, numParticles = 20, range=[0,100], generations=20_000 )
 		@c1 = rand * 2
-		@c2 = 4 - c1
+		@c2 = 4 - @c1
 
-		@range = { :min => min, :max => max }
+		@range = generations
 
-		@particles 	= []
-		@velocity 	= []
-		spawnParticles(numParticles)
+		@range= { :min => range[0], :max => range[1]}
+
+		@particles 		= []
+		spawnParticles(dimension, numParticles)
 	end
 
-	def opt(&fit, generations = 20_000)
-		
+	def opt(&fitness_func)
 	end
 
 	private
@@ -21,22 +20,15 @@ class Pso
 		
 	end
 
-	def spawnParticles( numPartices )
-		span = @max - @min
+	def spawnParticles( dimension, numPartices )
+		span = @range[:max] - @range[:min]
+		@particles ||= []
+		numPartices.times do
+			velocity = ([span]*dimension).map {|x| (Random.rand() - 0.5)*x }
+			position = ([span]*dimension).map {|x| Random.rand()*x }
 
-		numParticles.times do
-			particle = [ span ] * dimension
-			velocity = [ 0 ] * dimension
-
-			velocity.map do |v|
-				(span *0.1) * (rand - 0.5)
-			end
-
-			particle.map do |p|
-				@min + p * rand
-			end
-
-			@particles << particle
+			@particles << { velocity: velocity,
+						    position: position }
 		end
 	end
 end
