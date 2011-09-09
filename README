@@ -17,4 +17,4 @@ generations   = 100
 
 optimizer = Pso.new( dimension, num_particles, range, generations) 
 solution, particle = optimizer.opt { |x| x**2 }
-=> => [5.151122913755718e-47, {:velocity=>[-2.1149050186198952e-24], :position=>[7.192420701346887e-24], :best=>[7.177132375646779e-24], :fitness=>5.151122913755718e-47}]
+=> [5.151122913755718e-47, {:velocity=>[-2.1149050186198952e-24], :position=>[7.192420701346887e-24], :best=>[7.177132375646779e-24], :fitness=>5.151122913755718e-47}]
