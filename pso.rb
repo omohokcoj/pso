@@ -1,6 +1,6 @@
 class Pso
 	attr_accessor :particles
-	def initialize( dimension, numParticles = 20, range=[0,100], generations=20_000 )
+	def initialize( dimension, numParticles = 20, range=[-100,100], generations=20_000 )
 		@c1           = rand * 2
 		@c2           = 4 - @c1
     @w            = 0.01

@@ -2,15 +2,15 @@ require './pso'
 describe Pso do
   before(:each) do
 	  @dimension = 1
-	  @numParticles = 20
+	  @num_particles = 20
     @range = [-100, 100]
     @generations = 100
-    @pso = Pso.new(@dimension, @numParticles, @range, @generations )
+    @pso = Pso.new(@dimension, @num_particles, @range, @generations )
   end
 
   context "init" do
     it "should create correct number of particles" do
-	    @pso.particles.count.should == @numParticles
+	    @pso.particles.count.should == @num_particles
     end
 
 	  it "should create particles with the correct dimension" do
